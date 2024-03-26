@@ -182,12 +182,13 @@ def main():
             #time.sleep(5)
             df = generate_dataframe()
         st.success("Check Your Email!")
-        #st.dataframe(df)
+        
         st.text_area("From", df.loc[0, 'From'])
         st.text_area("Subject", df.loc[0, 'Subject'])
         st.text_area("Body Summary", df.loc[0, 'Body_summary'])
         st.text_area("Category", df.loc[0, 'Final_Class'])
-        #st.download_button(label="Download data as CSV",data=df.to_csv(),file_name='Email_summary.csv',mime='text/csv')
+        st.dataframe(df)
+        st.download_button(label="Download data as CSV",data=df.to_csv(),file_name='Email_summary.csv',mime='text/csv')
     except Exception as e:
       st.error(f"Error executing: {e}")
 
