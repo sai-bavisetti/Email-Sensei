@@ -4,6 +4,7 @@ import pandas as pd
 import imaplib
 import email
 from transformers import AutoTokenizer
+from transformers import pipeline
 import transformers
 # import torch
 from datetime import datetime, date
