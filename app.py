@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import time
+# import time
 import imaplib
 import email
 from transformers import AutoTokenizer
@@ -8,8 +8,8 @@ import transformers
 #import torch
 from datetime import datetime, date
 from email.header import decode_header
-import webbrowser
-import os
+# import webbrowser
+# import os
 import pandas as pd
 import numpy as np
 import nltk
@@ -172,8 +172,11 @@ def generate_dataframe():
 def main():
   """Streamlit app to display output on button click."""
   
-  st.title(":blue[Email Sensei]")
+#   st.title(":blue[Email Sensei]")
+  st.markdown("<h1 style='text-align: center; color: blue;'>Email Sensei</h1>", unsafe_allow_html=True)
   st.caption(":green[Please send an email to sai_bavisetti@outlook.com]")
+#   email_id = st.text_input('Enter Outlook Email id:', 'sai_bavisetti@outlook.com')
+#   password = st.text_input('Enter password:', type = "password")
 
   if st.button("Process Emails"):
     try:
@@ -181,14 +184,15 @@ def main():
         with st.spinner('Wait for it...'):
             #time.sleep(5)
             df = generate_dataframe()
-        st.success("Check Your Email!")
+        st.success("Check Your Result!")
         
         st.text_area("From", df.loc[0, 'From'])
         st.text_area("Subject", df.loc[0, 'Subject'])
         st.text_area("Body Summary", df.loc[0, 'Body_summary'])
         st.text_area("Category", df.loc[0, 'Final_Class'])
-        st.dataframe(df)
-        st.download_button(label="Download data as CSV",data=df.to_csv(),file_name='Email_summary.csv',mime='text/csv')
+        st.dataframe(df[['Subject','From', 'Body_summary','Final_Class']])
+        st.download_button(label="Download data as CSV",data=df[['Subject','From', 'Body_summary','Final_Class']].to_csv(),
+                           file_name='Email_summary.csv',mime='text/csv')
     except Exception as e:
       st.error(f"Error executing: {e}")
 
