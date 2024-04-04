@@ -5,7 +5,7 @@ import imaplib
 import email
 from transformers import AutoTokenizer
 import transformers
-#import torch
+import torch
 from datetime import datetime, date
 from email.header import decode_header
 # import webbrowser
