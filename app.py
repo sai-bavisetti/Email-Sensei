@@ -3,8 +3,8 @@ import pandas as pd
 # import time
 import imaplib
 import email
-from transformers import AutoTokenizer
-import transformers
+from transformers import AutoTokenizer, pipeline
+# import transformers
 # import torch
 from datetime import datetime, date
 from email.header import decode_header
