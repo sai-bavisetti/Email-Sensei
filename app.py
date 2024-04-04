@@ -133,7 +133,8 @@ def generate_dataframe():
   model = "facebook/bart-large-cnn"
 
   tokenizer = AutoTokenizer.from_pretrained(model)
-  summarizer = transformers.pipeline("summarization", model=model)
+#   summarizer = transformers.pipeline("summarization", model=model)
+  summarizer = pipeline("summarization", model=model)
 
 
   for i in range(len(Email_df)):
